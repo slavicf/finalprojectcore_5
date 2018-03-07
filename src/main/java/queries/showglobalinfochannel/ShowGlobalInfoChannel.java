@@ -19,22 +19,22 @@ public class ShowGlobalInfoChannel {
     }
 
     public String getTitle() {
-        return channel.items[0].snippet.title;
+        return channel.getTitle();
     }
 
     public String getPublishedAt() {
-        return channel.items[0].snippet.publishedAt;
+        return channel.getPublishedAt();
     }
 
     public Long getSubscriberCount() {
-        return channel.items[0].statistics.subscriberCount;
+        return channel.getSubscriberCount();
     }
 
     public Long getVideoCount() {
-        return channel.items[0].statistics.videoCount;
+        return channel.getVideoCount();
     }
 
     public Long getViewCount() {
-        return channel.items[0].statistics.viewCount;
+        return channel.getViewCount();
     }
 }
