@@ -1,8 +1,8 @@
-package queries.t1showglobalinfochannel;
+package queries.showglobalinfochannel;
 
 import com.alibaba.fastjson.JSON;
 import com.mashape.unirest.http.exceptions.UnirestException;
-import queries.t1showglobalinfochannel.Channel.Channel;
+import queries.showglobalinfochannel.Channel.Channel;
 
 public class ShowGlobalInfoChannel {
     private String idChannel;
@@ -19,26 +19,22 @@ public class ShowGlobalInfoChannel {
     }
 
     public String getTitle() {
-        return channel.getTitle();
+        return channel.items[0].snippet.title;
     }
 
     public String getPublishedAt() {
-        return channel.getPublishedAt();
+        return channel.items[0].snippet.publishedAt;
     }
 
     public Long getSubscriberCount() {
-        return channel.getSubscriberCount();
+        return channel.items[0].statistics.subscriberCount;
     }
 
     public Long getVideoCount() {
-        return channel.getVideoCount();
-    }
-
-    public Long getCommentCount() {
-        return channel.getCommentCount();
+        return channel.items[0].statistics.videoCount;
     }
 
     public Long getViewCount() {
-        return channel.getViewCount();
+        return channel.items[0].statistics.viewCount;
     }
 }

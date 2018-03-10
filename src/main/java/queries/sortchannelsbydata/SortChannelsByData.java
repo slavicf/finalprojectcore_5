@@ -1,9 +1,9 @@
-package queries.t3sortchannelsbydata;
+package queries.sortchannelsbydata;
 
 import com.alibaba.fastjson.JSON;
 import com.mashape.unirest.http.exceptions.UnirestException;
-import queries.t1showglobalinfochannel.Channel.Channel;
-import queries.t1showglobalinfochannel.YouTubeAPI;
+import queries.showglobalinfochannel.Channel.Channel;
+import queries.showglobalinfochannel.YouTubeAPI;
 
 import java.util.ArrayList;
 import java.util.Comparator;

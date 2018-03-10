@@ -1,4 +1,4 @@
-package queries.t1showglobalinfochannel.Channel;
+package queries.showglobalinfochannel.Channel;
 
 public class Snippet {
     public String title;

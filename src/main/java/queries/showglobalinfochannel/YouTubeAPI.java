@@ -1,4 +1,4 @@
-package queries.t1showglobalinfochannel;
+package queries.showglobalinfochannel;
 
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;

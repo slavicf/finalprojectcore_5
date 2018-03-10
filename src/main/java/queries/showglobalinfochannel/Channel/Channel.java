@@ -1,9 +1,9 @@
-package queries.t1showglobalinfochannel.Channel;
+package queries.showglobalinfochannel.Channel;
 
 import java.util.Arrays;
 
 public class Channel {
-    @SuppressWarnings("WeakerAccess")
+    public String nextPageToken;
     public Item[] items;
 
     @Override
@@ -25,10 +25,6 @@ public class Channel {
 
     public long getVideoCount() {
         return items[0].statistics.videoCount;
-    }
-
-    public long getCommentCount() {
-        return items[0].statistics.commentCount;
     }
 
     public long getViewCount() {

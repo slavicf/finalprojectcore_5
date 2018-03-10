@@ -1,8 +1,7 @@
-package queries.t1showglobalinfochannel.Channel;
+package queries.showglobalinfochannel.Channel;
 
 public class Statistics {
     public long viewCount;
-    public long commentCount;
     public long subscriberCount;
     public long videoCount;
 
