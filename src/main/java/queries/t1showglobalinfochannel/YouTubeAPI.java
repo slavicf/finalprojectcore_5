@@ -12,7 +12,7 @@ public class YouTubeAPI {
         HttpResponse<String> response = Unirest.get("https://www.googleapis.com/youtube/v3/channels")
                 .queryString("key", API_KEY)
                 .queryString("id", id)
-                .queryString("part", "snippet,statistics")
+                .queryString("part", "snippet, statistics")
                 .asString();
         return response.getBody();
     }

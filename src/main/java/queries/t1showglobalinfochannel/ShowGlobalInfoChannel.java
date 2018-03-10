@@ -34,6 +34,10 @@ public class ShowGlobalInfoChannel {
         return channel.getVideoCount();
     }
 
+    public Long getCommentCount() {
+        return channel.getCommentCount();
+    }
+
     public Long getViewCount() {
         return channel.getViewCount();
     }

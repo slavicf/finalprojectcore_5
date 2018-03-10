@@ -27,6 +27,10 @@ public class Channel {
         return items[0].statistics.videoCount;
     }
 
+    public long getCommentCount() {
+        return items[0].statistics.commentCount;
+    }
+
     public long getViewCount() {
         return items[0].statistics.viewCount;
     }

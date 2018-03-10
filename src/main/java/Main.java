@@ -19,7 +19,7 @@ public class Main {
     }
 
     private static void task3() throws UnirestException {
-        System.out.println("task2:");
+        System.out.println("task3:");
         String[] channelIds = {"UCmBkHKLRjfHDfFyhrZhowcQ",
                 "UCuXYmUOJSbEH1x88WUV1aMg",
                 "UCuvrjFN3uRkBT3_VUlhKqcA",
@@ -29,8 +29,15 @@ public class Main {
         sortChannelsByData.sortViewCount();
     }
 
-    private static void task4() {
-
+    private static void task4() throws UnirestException {
+        System.out.println("\n" + new Object(){}.getClass().getEnclosingMethod().getName() + ":");
+        ShowGlobalInfoChannel showGlobalInfoChannel = new ShowGlobalInfoChannel("UCuXYmUOJSbEH1x88WUV1aMg");
+        System.out.println("Имя канала " + showGlobalInfoChannel.getTitle() +
+                "\nДата создания канала " + showGlobalInfoChannel.getPublishedAt() +
+                "\nКол-во подписчиков " + showGlobalInfoChannel.getSubscriberCount() +
+                "\nКол-во видео на канале " + showGlobalInfoChannel.getVideoCount() +
+                "\nКол-во просмотров всех видео " + showGlobalInfoChannel.getViewCount() +
+                "\nКол-во комментариев всех видео " + showGlobalInfoChannel.getCommentCount());
     }
 
     private static void task5() {
@@ -41,12 +48,10 @@ public class Main {
         System.out.println("final project core");
 
         task1();
-        task2();
+//        task2();
         task3();
         task4();
-        task5();
-
-        System.out.println("task3:");
+//        task5();
 
     }
 }
