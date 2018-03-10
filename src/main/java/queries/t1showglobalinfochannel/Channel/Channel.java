@@ -1,8 +1,9 @@
-package queries.showglobalinfochannel.Channel;
+package queries.t1showglobalinfochannel.Channel;
 
 import java.util.Arrays;
 
 public class Channel {
+    @SuppressWarnings("WeakerAccess")
     public Item[] items;
 
     @Override

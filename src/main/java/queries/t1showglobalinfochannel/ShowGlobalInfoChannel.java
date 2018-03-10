@@ -1,8 +1,8 @@
-package queries.showglobalinfochannel;
+package queries.t1showglobalinfochannel;
 
 import com.alibaba.fastjson.JSON;
 import com.mashape.unirest.http.exceptions.UnirestException;
-import queries.showglobalinfochannel.Channel.Channel;
+import queries.t1showglobalinfochannel.Channel.Channel;
 
 public class ShowGlobalInfoChannel {
     private String idChannel;

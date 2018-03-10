@@ -1,4 +1,4 @@
-package queries.showglobalinfochannel.Channel;
+package queries.t1showglobalinfochannel.Channel;
 
 public class Statistics {
     public long viewCount;
