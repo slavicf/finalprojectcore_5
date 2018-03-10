@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 public class Channel {
     public String nextPageToken;
+    public PageInfo pageInfo;
     public Item[] items;
 
     @Override

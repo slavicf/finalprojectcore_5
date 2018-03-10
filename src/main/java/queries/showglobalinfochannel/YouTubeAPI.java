@@ -3,17 +3,39 @@ package queries.showglobalinfochannel;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
+import queries.mediaresonance.videos.Video;
 
 public class YouTubeAPI {
-    @SuppressWarnings("WeakerAccess")
     public static final String API_KEY = "AIzaSyCrVQPr-LRlFYQkpipjrY0x1HGYAwoP7E8";
 
-    public static String Search(String id) throws UnirestException {
+    public static String channel(String id) throws UnirestException {
         HttpResponse<String> response = Unirest.get("https://www.googleapis.com/youtube/v3/channels")
                 .queryString("key", API_KEY)
                 .queryString("id", id)
                 .queryString("part", "snippet, statistics")
                 .asString();
+        return response.getBody();
+    }
+
+    public static String search(String channelId, String query, int maxResults) throws UnirestException {
+        HttpResponse<String> response = Unirest.get("https://www.googleapis.com/youtube/v3/search")
+                .queryString("key", API_KEY)
+                .queryString("channelId", channelId)
+                .queryString("part", "snippet")
+                .queryString("maxResults", maxResults)
+                .queryString("q", query)
+                .asString();
+        return response.getBody();
+    }
+
+    public static Video videos(String id) throws UnirestException {
+//        HttpResponse<String> response = Unirest.get("https://www.googleapis.com/youtube/v3/videos?part=statistics&id=PwgSwI2jc0s&key=AIzaSyCrVQPr-LRlFYQkpipjrY0x1HGYAwoP7E8")
+        HttpResponse<Video> response = Unirest.get("https://www.googleapis.com/youtube/v3/videos")
+                .queryString("part", "statistics")
+                .queryString("id", id)
+                .queryString("key", API_KEY)
+//                .asString();
+                .asObject(Video.class);
         return response.getBody();
     }
 }

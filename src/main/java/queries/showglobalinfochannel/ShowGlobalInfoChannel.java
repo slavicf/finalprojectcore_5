@@ -10,7 +10,7 @@ public class ShowGlobalInfoChannel {
 
     public ShowGlobalInfoChannel(String idChannel) throws UnirestException {
         this.idChannel = idChannel;
-        String response = YouTubeAPI.Search(idChannel);
+        String response = YouTubeAPI.channel(idChannel);
         channel = JSON.parseObject(response, Channel.class);
     }
 

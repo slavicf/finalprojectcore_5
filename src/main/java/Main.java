@@ -1,4 +1,5 @@
 import com.mashape.unirest.http.exceptions.UnirestException;
+import queries.mediaresonance.MediaResonance;
 import queries.showglobalinfochannel.ShowGlobalInfoChannel;
 import queries.sortchannelsbydata.SortChannelsByData;
 
@@ -30,14 +31,7 @@ public class Main {
     }
 
     private static void task4() throws UnirestException {
-        System.out.println("\n" + new Object() {
-        }.getClass().getEnclosingMethod().getName() + ":");
-        ShowGlobalInfoChannel showGlobalInfoChannel = new ShowGlobalInfoChannel("UCuXYmUOJSbEH1x88WUV1aMg");
-        System.out.println("Имя канала " + showGlobalInfoChannel.getTitle() +
-                "\nДата создания канала " + showGlobalInfoChannel.getPublishedAt() +
-                "\nКол-во подписчиков " + showGlobalInfoChannel.getSubscriberCount() +
-                "\nКол-во видео на канале " + showGlobalInfoChannel.getVideoCount() +
-                "\nКол-во просмотров всех видео " + showGlobalInfoChannel.getViewCount());
+        MediaResonance.search();
     }
 
     private static void task5() {

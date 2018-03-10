@@ -19,7 +19,7 @@ public class SortChannelsByData {
 
     private void initializationChannels() throws UnirestException {
         for (int i = 0; i < channelIds.length; i++) {
-            String response = YouTubeAPI.Search(channelIds[i]);
+            String response = YouTubeAPI.channel(channelIds[i]);
             channels.add(JSON.parseObject(response, Channel.class));
         }
     }
