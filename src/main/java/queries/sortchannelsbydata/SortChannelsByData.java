@@ -3,55 +3,58 @@ package queries.sortchannelsbydata;
 import com.alibaba.fastjson.JSON;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import queries.showglobalinfochannel.Channel.Channel;
+import queries.showglobalinfochannel.ShowGlobalInfoChannel;
 import queries.showglobalinfochannel.YouTubeAPI;
+import settings.Settings;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
 
 public class SortChannelsByData {
-    private ArrayList<Channel> channels = new ArrayList<>();
     private String[] channelIds;
+    private Settings settings;
+    private ArrayList<ShowGlobalInfoChannel> showGlobalInfoChannels = new ArrayList<>();
 
-    public SortChannelsByData(String[] channelIds) throws UnirestException {
+    public SortChannelsByData(String[] channelIds, Settings settings) throws UnirestException, IOException {
         this.channelIds = channelIds;
-        initializationChannels();
+        this.settings   = settings;
+        loadChannels();
     }
 
-    private void initializationChannels() throws UnirestException {
+    private void loadChannels() throws UnirestException, IOException {
         for (int i = 0; i < channelIds.length; i++) {
-            String response = YouTubeAPI.channel(channelIds[i]);
-            channels.add(JSON.parseObject(response, Channel.class));
+            showGlobalInfoChannels.add(new ShowGlobalInfoChannel(channelIds[i], settings));
         }
     }
 
     public void sortTitle(){
-        channels.sort(Comparator.comparing(Channel::getTitle));
-        showChannelsList();
+        showGlobalInfoChannels.sort(Comparator.comparing(ShowGlobalInfoChannel::getTitle));
     }
 
     public void sortPublishedAt(){
-        channels.sort(Comparator.comparing(Channel::getPublishedAt));
-        showChannelsList();
+        showGlobalInfoChannels.sort(Comparator.comparing(ShowGlobalInfoChannel::getPublishedAt));
     }
 
     public void sortSubscriberCount(){
-        channels.sort(Comparator.comparing(Channel::getSubscriberCount));
-        showChannelsList();
+        showGlobalInfoChannels.sort(Comparator.comparing(ShowGlobalInfoChannel::getSubscriberCount));
     }
 
     public void sortVideoCount(){
-        channels.sort(Comparator.comparing(Channel::getVideoCount));
-        showChannelsList();
+        showGlobalInfoChannels.sort(Comparator.comparing(ShowGlobalInfoChannel::getVideoCount));
     }
 
     public void sortViewCount(){
-        channels.sort(Comparator.comparing(Channel::getViewCount));
-        showChannelsList();
+        showGlobalInfoChannels.sort(Comparator.comparing(ShowGlobalInfoChannel::getViewCount));
     }
 
-    public void showChannelsList(){
-        for (int i = 0; i < channels.size(); i++) {
-            System.out.println("\n\n" + channels.get(i));
+    @Override
+    public String toString() {
+        String channelList = "\n";
+        for (int i = 0; i < showGlobalInfoChannels.size(); i++) {
+            channelList += showGlobalInfoChannels.get(i) + "\n";
         }
+        return channelList;
     }
 }
