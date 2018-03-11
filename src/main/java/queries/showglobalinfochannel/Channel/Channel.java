@@ -1,5 +1,7 @@
 package queries.showglobalinfochannel.Channel;
 
+import queries.mediaresonance.search.PageInfo;
+
 import java.util.Arrays;
 
 public class Channel {

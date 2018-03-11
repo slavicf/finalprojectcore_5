@@ -28,14 +28,12 @@ public class YouTubeAPI {
         return response.getBody();
     }
 
-    public static Video videos(String id) throws UnirestException {
-//        HttpResponse<String> response = Unirest.get("https://www.googleapis.com/youtube/v3/videos?part=statistics&id=PwgSwI2jc0s&key=AIzaSyCrVQPr-LRlFYQkpipjrY0x1HGYAwoP7E8")
-        HttpResponse<Video> response = Unirest.get("https://www.googleapis.com/youtube/v3/videos")
+    public static String videos(String id) throws UnirestException {
+        HttpResponse<String> response = Unirest.get("https://www.googleapis.com/youtube/v3/videos")
                 .queryString("part", "statistics")
                 .queryString("id", id)
                 .queryString("key", API_KEY)
-//                .asString();
-                .asObject(Video.class);
+                .asString();
         return response.getBody();
     }
 }
