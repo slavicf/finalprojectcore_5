@@ -100,7 +100,7 @@ public class Main {
     private static void task4() throws UnirestException {
         System.out.println("\n\ntask3:");
         //task1();
-        System.out.println(MediaResonance.search().toString());
+        System.out.println(MediaResonance.search("1111").toString());
     }
 
     private static void task5() {

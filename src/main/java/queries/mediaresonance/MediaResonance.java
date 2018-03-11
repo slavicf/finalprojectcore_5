@@ -12,18 +12,18 @@ import java.util.ArrayList;
 
 public class MediaResonance {
 
-    public static Statistics search() throws UnirestException {
+    public static Statistics search(String channelId) throws UnirestException {
         int results = 0;
         int index = 0;
+        int maxResults = 50;
         Statistics statistics = new Statistics();
-//        int viewCount = 0;
-//        int commentCount = 0;
         String response;
         String pageToken = "";
+        String query = "";
         Video video;
 
         do {
-            response = YouTubeAPI.search("UCuXYmUOJSbEH1x88WUV1aMg", "", 50, pageToken);
+            response = YouTubeAPI.search(channelId, query, maxResults, pageToken);
             Search search = JSON.parseObject(response, Search.class);
             results = search.items.length;
             pageToken = search.nextPageToken;
