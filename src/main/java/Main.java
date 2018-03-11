@@ -31,7 +31,9 @@ public class Main {
     }
 
     private static void task4() throws UnirestException {
-        MediaResonance.search();
+        System.out.println("\n\ntask3:");
+        task1();
+        System.out.println(MediaResonance.search().toString());;
     }
 
     private static void task5() {
@@ -41,9 +43,9 @@ public class Main {
     public static void main(String[] args) throws UnirestException {
         System.out.println("final project core");
 
-        task1();
+//        task1();
 //        task2();
-        task3();
+//        task3();
         task4();
 //        task5();
     }

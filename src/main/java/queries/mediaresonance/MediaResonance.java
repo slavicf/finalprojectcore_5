@@ -4,25 +4,53 @@ import com.alibaba.fastjson.JSON;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import queries.mediaresonance.search.Item;
 import queries.mediaresonance.search.Search;
+import queries.mediaresonance.videos.Statistics;
 import queries.mediaresonance.videos.Video;
 import queries.showglobalinfochannel.YouTubeAPI;
 
 import java.util.ArrayList;
 
 public class MediaResonance {
-    private static ArrayList<Video> videos = new ArrayList<>();
 
-    public static void search() throws UnirestException {
-
+    public static Statistics search() throws UnirestException {
+        int results = 0;
+        int index = 0;
+        Statistics statistics = new Statistics();
+//        int viewCount = 0;
+//        int commentCount = 0;
         String response;
-        response = YouTubeAPI.search("UCuXYmUOJSbEH1x88WUV1aMg", "", 50);
-        Search search = JSON.parseObject(response, Search.class);
-        int viewCount = 0;
-        for (Item item: search.items) {
-            response = YouTubeAPI.videos(item.id.videoId);
-            Video video = JSON.parseObject(response, Video.class);
-            viewCount += video.items[0].statistics.viewCount;
-        }
+        String pageToken = "";
+        Video video;
 
+        do {
+            response = YouTubeAPI.search("UCuXYmUOJSbEH1x88WUV1aMg", "", 50, pageToken);
+            Search search = JSON.parseObject(response, Search.class);
+            results = search.items.length;
+            pageToken = search.nextPageToken;
+            ArrayList<String> items = new ArrayList<>();
+
+//            for (int i = 0; i < results; i++) {
+//                if (search.items[i].id.videoId != null) {
+//                    items.add(search.items[i].id.videoId);
+//                } else System.out.println(index + " skipped");
+//            }
+
+            for (Item searchItem : search.items) {
+                if (searchItem.id.videoId != null) {
+                    items.add(searchItem.id.videoId);
+                }
+            }
+
+            String temp = items.toString();
+            String videoID = temp.substring(1, temp.length() - 1);
+
+            response = YouTubeAPI.videos(videoID);
+            video = JSON.parseObject(response, Video.class);
+            for (queries.mediaresonance.videos.Item videoItem: video.items) {
+                statistics.viewCount += videoItem.statistics.viewCount;
+                statistics.commentCount += videoItem.statistics.commentCount;
+            }
+        } while (pageToken != null);
+        return statistics;
     }
 }

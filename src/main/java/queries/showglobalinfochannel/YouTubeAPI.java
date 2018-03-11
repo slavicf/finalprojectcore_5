@@ -17,12 +17,13 @@ public class YouTubeAPI {
         return response.getBody();
     }
 
-    public static String search(String channelId, String query, int maxResults) throws UnirestException {
+    public static String search(String channelId, String query, int maxResults, String pageToken) throws UnirestException {
         HttpResponse<String> response = Unirest.get("https://www.googleapis.com/youtube/v3/search")
-                .queryString("key", API_KEY)
-                .queryString("channelId", channelId)
                 .queryString("part", "snippet")
+                .queryString("channelId", channelId)
                 .queryString("maxResults", maxResults)
+                .queryString("pageToken", pageToken)
+                .queryString("key", API_KEY)
                 .queryString("q", query)
                 .asString();
         return response.getBody();
