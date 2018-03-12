@@ -1,5 +1,6 @@
 package gui;
 
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -9,6 +10,8 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import settings.Settings;
 
+import java.util.ArrayList;
+
 public class GUI {
 
     private final int WIDTH = 400;
@@ -17,7 +20,7 @@ public class GUI {
     private Stage window;
     private Scene s0main, s1analytics, s2query, s9settings;
     private Settings settings;
-//    private static ArrayList<Node> layout = new ArrayList<>();
+    private static ArrayList<Node> nodes;
 
     public GUI(Stage window, Settings settings) {
         this.window = window;
@@ -25,7 +28,7 @@ public class GUI {
 
         scene0();
         scene1();
-        scene2();
+//        scene2();
         scene9();
 
         window.setScene(s0main);
@@ -58,47 +61,114 @@ public class GUI {
         button0.setOnAction(e -> window.setScene(s0main));
 
         Button button1 = new Button("Задача 1");
-        button1.setOnAction(e -> window.setScene(s2query));
+        button1.setOnAction(e -> task1());
 
         Button button2 = new Button("Задача 2");
-        button2.setOnAction(e -> window.setScene(s2query));
+        button2.setOnAction(e -> task2());
 
         Button button3 = new Button("Задача 3");
-        button3.setOnAction(e -> window.setScene(s2query));
+        button3.setOnAction(e -> task3());
 
         Button button4 = new Button("Задача 4");
-        button4.setOnAction(e -> window.setScene(s2query));
+        button4.setOnAction(e -> task4());
 
         Button button5 = new Button("Задача 5");
-        button5.setOnAction(e -> window.setScene(s2query));
+        button5.setOnAction(e -> task5());
 
         Button button6 = new Button("Задача 6");
-        button6.setOnAction(e -> window.setScene(s2query));
+        button6.setOnAction(e -> task6());
 
         Pane layout = new VBox(spacing);
         layout.getChildren().addAll(label0, label1, button1, button2, button3, button4, button5, button6);
         s1analytics = new Scene(layout, WIDTH, HEIGHT);
     }
 
-    private void scene2() {                          // Экран запроса
-
-        Label label0 = new Label("Название запроса");
-        Label label1 = new Label("Краткое описание результата выполнения запроса");
-        Label label2 = new Label("Описание формата ввода данных");
+    private void head(String text) {
+        nodes = new ArrayList<>();
 
         Button button0 = new Button("Вернуться на главный экран");
         button0.setOnAction(e -> window.setScene(s0main));
-
+        nodes.add(button0);
         Button button1 = new Button("Перейти в YouTube Analytics");
         button1.setOnAction(e -> window.setScene(s1analytics));
+        nodes.add(button1);
+        nodes.add(new Label(text));            // Название запроса
+        nodes.add(new Label("Краткое описание результата выполнения запроса"));
 
+    }
+
+    private void task1() {
+        head("Отобразить глобальную информацию о канале");
+        nodes.add(new Label("Введите ChannelID:"));
+        nodes.add(new TextField());
+        Button button1 = new Button("Выполнить");
+        button1.setOnAction(e -> System.out.println("Task1"));
+        nodes.add(button1);
+        scene2();
+    }
+
+    private void task2() {
+        head("Сравнить глобальную информацию о каналах");
+        nodes.add(new Label("Введите ChannelID1 и ChannelID2 через пробел:"));
+        nodes.add(new TextField());
+        Button button1 = new Button("Выполнить");
+        button1.setOnAction(e -> System.out.println("Task2"));
+        nodes.add(button1);
+        scene2();
+    }
+
+    private void task3() {
+        head("Сортировать каналы по их данным");
+        nodes.add(new Label("Введите массив каналов через пробел:"));
+        nodes.add(new TextField());
+        nodes.add(new Label("Введите способ сортировки name/date/subscribers/videos/views:"));
+        nodes.add(new TextField());
+        Button button1 = new Button("Выполнить");
+        button1.setOnAction(e -> System.out.println("Task3"));
+        nodes.add(button1);
+        scene2();
+    }
+
+    private void task4() {
+        head("Медиа резонанс");
+        nodes.add(new Label("Введите ChannelID:"));
+        nodes.add(new TextField());
+        Button button1 = new Button("Выполнить");
+        button1.setOnAction(e -> System.out.println("Task4"));
+        nodes.add(button1);
+        scene2();
+    }
+
+    private void task5() {
+        head("Сравнить Медиа резонанс");
+        nodes.add(new Label("Введите ChannelID1 и ChannelID2 через пробел:"));
+        nodes.add(new TextField());
+        Button button1 = new Button("Выполнить");
+        button1.setOnAction(e -> System.out.println("Task5"));
+        nodes.add(button1);
+        scene2();
+    }
+
+    private void task6() {
+        head("Сортировать каналы по Медиа резонансу");
+        nodes.add(new Label("Введите массив каналов через пробел:"));
+        nodes.add(new TextField());
+        nodes.add(new Label("Введите способ сортировки name/date/subscribers/videos/views:"));
+        nodes.add(new TextField());
+        Button button1 = new Button("Выполнить");
+        button1.setOnAction(e -> System.out.println("Task6"));
+        nodes.add(button1);
+        scene2();
+    }
+
+    private void scene2() {                          // Экран запроса
         Pane layout = new VBox(spacing);
-        layout.getChildren().addAll(label0, label1, label2, button0, button1);
+        layout.getChildren().addAll(nodes);
         s2query = new Scene(layout, WIDTH, HEIGHT);
+        window.setScene(s2query);
     }
 
     private void scene9() {                          // Настройки
-
         Label label0 = new Label("Настройки");
 
         Button button0 = new Button("Вернуться на главный экран");
