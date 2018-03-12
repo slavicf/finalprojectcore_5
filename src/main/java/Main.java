@@ -19,34 +19,6 @@ public class Main extends Application {
 
     public static Settings settings;
 
-    private static void task1(String channelId, Settings settings) throws UnirestException, IOException, ExecutionException, InterruptedException {
-        System.out.println("task1:");
-
-        Callable<ShowGlobalInfoChannel> channelCallable = new Callable<ShowGlobalInfoChannel>() {
-            @Override
-            public ShowGlobalInfoChannel call() throws Exception {
-                return new ShowGlobalInfoChannel(channelId, settings);
-            }
-        };
-        FutureTask<ShowGlobalInfoChannel> task = new FutureTask<ShowGlobalInfoChannel>(channelCallable);
-        Thread t = new Thread(task);
-
-        if (settings.getCalculateTimeForQuery().equals(true)) {
-            long startTime = System.currentTimeMillis();
-            t.start();
-            ShowGlobalInfoChannel showGlobalInfoChannel = task.get();
-            long endTime = System.currentTimeMillis();
-            System.out.println(showGlobalInfoChannel);
-            System.out.println("Время затраченного не выполнение: " + (endTime - startTime) + " миллисекунд \n");
-        } else {
-            t.start();
-            ShowGlobalInfoChannel showGlobalInfoChannel = task.get();
-            System.out.println(showGlobalInfoChannel);
-        }
-
-
-    }
-
     private static void task2(String channelId1, String channelId2, Settings settings) throws ExecutionException, InterruptedException {
         System.out.println("task2:");
 
