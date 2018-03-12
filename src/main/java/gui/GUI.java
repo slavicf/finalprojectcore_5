@@ -1,5 +1,7 @@
 package gui;
 
+import com.mashape.unirest.http.exceptions.UnirestException;
+import gui.Query1;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -12,7 +14,9 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import settings.Settings;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
 public class GUI {
 
@@ -140,7 +144,7 @@ public class GUI {
         button1.setOnAction(e -> window.setScene(s1analytics));
         nodes.add(button1);
         nodes.add(label(text));     // Название запроса
-        nodes.add(label("Краткое описание результата выполнения запроса"));
+        nodes.add(label("Результат запроса"));
         nodes.add(label(text2));
         nodes.add(textField(""));
     }
@@ -149,10 +153,19 @@ public class GUI {
         head("Отобразить глобальную информацию о канале", "Введите ChannelID:");
         Button button1 = button("Выполнить");
         button1.setOnAction(e -> {
-            System.out.println("Task1");
-            Node node = nodes.get(3);
-
-            node.setAccessibleText("Mission\naccomplished");
+//            System.out.println("Task1");
+            try {
+                String string = Query1.query1(((Label) nodes.get(5)).getText(), settings);
+                ((Label) nodes.get(3)).setText(string);
+            } catch (UnirestException e1) {
+                e1.printStackTrace();
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            } catch (ExecutionException e1) {
+                e1.printStackTrace();
+            } catch (InterruptedException e1) {
+                e1.printStackTrace();
+            }
         });
         nodes.add(button1);
         scene2();
