@@ -153,9 +153,10 @@ public class GUI {
         head("Отобразить глобальную информацию о канале", "Введите ChannelID:");
         Button button1 = button("Выполнить");
         button1.setOnAction(e -> {
-//            System.out.println("Task1");
+            System.out.println("Task1");
+            String channelId = ((TextField) nodes.get(5)).getText();
             try {
-                String string = Query1.query1(((Label) nodes.get(5)).getText(), settings);
+                String string = Query1.query1(channelId, settings);
                 ((Label) nodes.get(3)).setText(string);
             } catch (UnirestException e1) {
                 e1.printStackTrace();
