@@ -7,6 +7,7 @@ import queries.mediaresonance.MediaResonance;
 import queries.showglobalinfochannel.ShowGlobalInfoChannel;
 import queries.sortchannelsbydata.SortChannelsByData;
 import settings.LoadSettings;
+import settings.SaveSettings;
 import settings.Settings;
 
 import java.io.IOException;
@@ -137,6 +138,9 @@ public class Main extends Application {
 //        task5();
 //        task6();
 
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            SaveSettings.save(settings);
+        }));
     }
 
     public static void main(String[] args) {
