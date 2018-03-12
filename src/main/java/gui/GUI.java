@@ -174,17 +174,42 @@ public class GUI {
     private void task2() {
         head("Сравнить глобальную информацию о каналах", "Введите ChannelID1 и ChannelID2 через пробел:");
         Button button1 = button("Выполнить");
-        button1.setOnAction(e -> System.out.println("Task2"));
+        button1.setOnAction(e -> {
+           // System.out.println("Task2");
+            try {
+                String[] channelIds = ((TextField) nodes.get(5)).getText().split(" ");
+                String string = Query2.query2(channelIds[0], channelIds[1], settings);
+                ((Label) nodes.get(3)).setText(string);
+            } catch (ExecutionException e1) {
+                e1.printStackTrace();
+            } catch (InterruptedException e1) {
+                e1.printStackTrace();
+            }
+        });
         nodes.add(button1);
         scene2();
     }
 
     private void task3() {
         head("Сортировать каналы по их данным", "Введите массив каналов через пробел:");
-        nodes.add(label("Введите способ сортировки name/date/subscribers/videos/views:"));
+        nodes.add(label("Введите способ сортировки title/date/subscribers/videos/views:"));
         nodes.add(textField("name"));
         Button button1 = button("Выполнить");
-        button1.setOnAction(e -> System.out.println("Task3"));
+        button1.setOnAction(e -> {
+            //System.out.println("Task3");
+            try {
+                String[] channelIds = ((TextField) nodes.get(5)).getText().split(" ");
+                String sortSwitcher = ((TextField) nodes.get(7)).getText().toLowerCase();
+                String string = Query3.query3(channelIds, sortSwitcher, settings);
+                ((Label) nodes.get(3)).setText(string);
+            } catch (UnirestException e1) {
+                e1.printStackTrace();
+            } catch (ExecutionException e1) {
+                e1.printStackTrace();
+            } catch (InterruptedException e1) {
+                e1.printStackTrace();
+            }
+        });
         nodes.add(button1);
         scene2();
     }
