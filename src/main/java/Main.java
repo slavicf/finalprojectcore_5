@@ -1,4 +1,8 @@
 import com.mashape.unirest.http.exceptions.UnirestException;
+import gui.GUI;
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 import queries.compareglobalinfochannels.CompareGlobalInfoChannels;
 import queries.mediaresonance.MediaResonance;
 import queries.showglobalinfochannel.ShowGlobalInfoChannel;
@@ -11,7 +15,7 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.FutureTask;
 
-public class Main {
+public class Main extends Application {
 
     private static void task1(String channelId, Settings settings) throws UnirestException, IOException, ExecutionException, InterruptedException {
         System.out.println("task1:");
@@ -107,7 +111,19 @@ public class Main {
 
     }
 
-    public static void main(String[] args) throws UnirestException, IOException, ExecutionException, InterruptedException {
+    private static void task6() {
+
+    }
+
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        GUI.window = primaryStage;
+        GUI.setup();
+
+        primaryStage.setScene(GUI.s0main);
+        primaryStage.setTitle("YouTube анализатор");
+        primaryStage.show();
+
         System.out.println("final project core");
 
         Settings settings = LoadSettings.load();
@@ -123,7 +139,12 @@ public class Main {
                 "UCoICDijraUJjIZNrPy-mRDQ"};
         task3(channelIds, settings);
 
-   //     task4();
+        //     task4();
 //        task5();
+
+    }
+
+    public static void main(String[] args) {
+        launch(args);
     }
 }
