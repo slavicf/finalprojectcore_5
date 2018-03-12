@@ -68,22 +68,22 @@ public class GUI {
         Button button0 = button("Вернуться на главный экран");
         button0.setOnAction(e -> window.setScene(s0main));
 
-        Button button1 = button("Задача 1");
+        Button button1 = button("[I] Отобразить глобальную информацию о канале");
         button1.setOnAction(e -> task1());
 
-        Button button2 = button("Задача 2");
+        Button button2 = button("[II] Сравнить глобальную информацию о каналах");
         button2.setOnAction(e -> task2());
 
-        Button button3 = button("Задача 3");
+        Button button3 = button("[III] Сортировать каналы по их данным");
         button3.setOnAction(e -> task3());
 
-        Button button4 = button("Задача 4");
+        Button button4 = button("[IV] Медиа резонанс");
         button4.setOnAction(e -> task4());
 
-        Button button5 = button("Задача 5");
+        Button button5 = button("[V] Сравнить Медиа резонанс");
         button5.setOnAction(e -> task5());
 
-        Button button6 = button("Задача 6");
+        Button button6 = button("[VI] Сортировать по Медиа резонансу");
         button6.setOnAction(e -> task6());
 
         Pane layout = new VBox(spacing);
