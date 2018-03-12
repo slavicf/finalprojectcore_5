@@ -69,12 +69,6 @@ public class Main extends Application {
         }
     }
 
-    private static void task4() throws UnirestException {
-        System.out.println("\n\ntask4:");
-        //task1();
-//        System.out.println(MediaResonance.search("1111").toString());
-    }
-
     private static void task5() {
 
     }
@@ -102,10 +96,6 @@ public class Main extends Application {
                 "UCC7qpnId5RIQruKDJOt2exw",
                 "UCoICDijraUJjIZNrPy-mRDQ"};
 //        task3(channelIds, settings);
-
-//        task4();
-//        task5();
-//        task6();
 
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
             SaveSettings.save(settings);
