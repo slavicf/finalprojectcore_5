@@ -1,7 +1,6 @@
 import com.mashape.unirest.http.exceptions.UnirestException;
 import gui.GUI;
 import javafx.application.Application;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 import queries.compareglobalinfochannels.CompareGlobalInfoChannels;
 import queries.mediaresonance.MediaResonance;
@@ -17,6 +16,8 @@ import java.util.concurrent.FutureTask;
 
 public class Main extends Application {
 
+    public static Settings settings;
+
     private static void task1(String channelId, Settings settings) throws UnirestException, IOException, ExecutionException, InterruptedException {
         System.out.println("task1:");
 
@@ -29,15 +30,14 @@ public class Main extends Application {
         FutureTask<ShowGlobalInfoChannel> task = new FutureTask<ShowGlobalInfoChannel>(channelCallable);
         Thread t = new Thread(task);
 
-        if(settings.getCalculateTimeForQuery().equals(true)){
+        if (settings.getCalculateTimeForQuery().equals(true)) {
             long startTime = System.currentTimeMillis();
             t.start();
             ShowGlobalInfoChannel showGlobalInfoChannel = task.get();
             long endTime = System.currentTimeMillis();
             System.out.println(showGlobalInfoChannel);
             System.out.println("Время затраченного не выполнение: " + (endTime - startTime) + " миллисекунд \n");
-        }
-        else{
+        } else {
             t.start();
             ShowGlobalInfoChannel showGlobalInfoChannel = task.get();
             System.out.println(showGlobalInfoChannel);
@@ -58,15 +58,14 @@ public class Main extends Application {
         FutureTask<CompareGlobalInfoChannels> task = new FutureTask<CompareGlobalInfoChannels>(channelCallable);
         Thread t = new Thread(task);
 
-        if(settings.getCalculateTimeForQuery().equals(true)){
+        if (settings.getCalculateTimeForQuery().equals(true)) {
             long startTime = System.currentTimeMillis();
             t.start();
             CompareGlobalInfoChannels compareGlobalInfoChannels = task.get();
             long endTime = System.currentTimeMillis();
             System.out.println(compareGlobalInfoChannels);
             System.out.println("Время затраченного не выполнение: " + (endTime - startTime) + " миллисекунд \n");
-        }
-        else{
+        } else {
             t.start();
             CompareGlobalInfoChannels compareGlobalInfoChannels = task.get();
             System.out.println(compareGlobalInfoChannels);
@@ -85,7 +84,7 @@ public class Main extends Application {
         FutureTask<SortChannelsByData> task = new FutureTask<SortChannelsByData>(channelCallable);
         Thread t = new Thread(task);
 
-        if(settings.getCalculateTimeForQuery().equals(true)){
+        if (settings.getCalculateTimeForQuery().equals(true)) {
             long startTime = System.currentTimeMillis();
             t.start();
             SortChannelsByData sortChannelsByData = task.get();
@@ -93,8 +92,7 @@ public class Main extends Application {
             long endTime = System.currentTimeMillis();
             System.out.println(sortChannelsByData);
             System.out.println("Время затраченного не выполнение: " + (endTime - startTime) + " миллисекунд \n");
-        }
-        else{
+        } else {
             t.start();
             SortChannelsByData sortChannelsByData = task.get();
             System.out.println(sortChannelsByData);
@@ -117,17 +115,13 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        GUI.window = primaryStage;
-        GUI.setup();
 
-        primaryStage.setScene(GUI.s0main);
-        primaryStage.setTitle("YouTube анализатор");
-        primaryStage.show();
+        settings = LoadSettings.load();
+        System.out.println(settings);
+
+        GUI gui = new GUI(primaryStage, settings);
 
         System.out.println("final project core");
-
-        Settings settings = LoadSettings.load();
-        System.out.println(settings);
 
 
 //        task1("UCmBkHKLRjfHDfFyhrZhowcQ", settings);
@@ -137,10 +131,11 @@ public class Main extends Application {
                 "UCuvrjFN3uRkBT3_VUlhKqcA",
                 "UCC7qpnId5RIQruKDJOt2exw",
                 "UCoICDijraUJjIZNrPy-mRDQ"};
-        task3(channelIds, settings);
+//        task3(channelIds, settings);
 
-        //     task4();
+//        task4();
 //        task5();
+//        task6();
 
     }
 
