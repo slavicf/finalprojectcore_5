@@ -1,7 +1,6 @@
 package gui;
 
 import com.mashape.unirest.http.exceptions.UnirestException;
-import gui.Query1;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -193,7 +192,18 @@ public class GUI {
     private void task4() {
         head("Медиа резонанс", "Введите ChannelID:");
         Button button1 = button("Выполнить");
-        button1.setOnAction(e -> System.out.println("Task4"));
+        button1.setOnAction(e -> {
+//            System.out.println("Task4");
+            try {
+                String channelId = ((TextField) nodes.get(5)).getText();
+                String string = Query4.query4(channelId, settings);
+                ((Label) nodes.get(3)).setText(string);
+            } catch (ExecutionException e1) {
+                e1.printStackTrace();
+            } catch (InterruptedException e1) {
+                e1.printStackTrace();
+            }
+        });
         nodes.add(button1);
         scene2();
     }
