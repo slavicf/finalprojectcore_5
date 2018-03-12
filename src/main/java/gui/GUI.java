@@ -146,16 +146,16 @@ public class GUI {
         nodes.add(label(text));     // Название запроса
         nodes.add(label("Результат запроса"));
         nodes.add(label(text2));
-        nodes.add(textField(""));
+        nodes.add(textField("UCuXYmUOJSbEH1x88WUV1aMg"));
     }
 
     private void task1() {
         head("Отобразить глобальную информацию о канале", "Введите ChannelID:");
         Button button1 = button("Выполнить");
         button1.setOnAction(e -> {
-            System.out.println("Task1");
-            String channelId = ((TextField) nodes.get(5)).getText();
+//            System.out.println("Task1");
             try {
+                String channelId = ((TextField) nodes.get(5)).getText();
                 String string = Query1.query1(channelId, settings);
                 ((Label) nodes.get(3)).setText(string);
             } catch (UnirestException e1) {
