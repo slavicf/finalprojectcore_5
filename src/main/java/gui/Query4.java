@@ -12,7 +12,7 @@ public class Query4 {
     public static String query4(String channelId, Settings settings) throws ExecutionException, InterruptedException {
         String task1Str = "";
 
-        Callable<Statistics> resonanceCallable = () -> MediaResonance.search(channelId);
+        Callable<Statistics> resonanceCallable = () -> MediaResonance.search(channelId, settings);
         FutureTask<Statistics> task = new FutureTask<>(resonanceCallable);
         Thread t = new Thread(task);
 
@@ -22,7 +22,7 @@ public class Query4 {
         long endTime = System.currentTimeMillis();
         task1Str += statistics.toString();
         if (settings.getCalculateTimeForQuery().equals(true))
-            task1Str += "\nВремя затраченного не выполнение: " + (endTime - startTime) + " миллисекунд";
+            task1Str += "\nВремя затраченного на выполнение: " + (endTime - startTime) + " миллисекунд";
         return task1Str;
     }
 }

@@ -196,11 +196,16 @@ public class GUI {
 //            System.out.println("Task4");
             try {
                 String channelId = ((TextField) nodes.get(5)).getText();
-                String string = Query4.query4(channelId, settings);
-                ((Label) nodes.get(3)).setText(string);
+                String string1 = Query1.query1(channelId, settings);
+                String string2 = Query4.query4(channelId, settings);
+                ((Label) nodes.get(3)).setText(string1 + "\n" + string2);
             } catch (ExecutionException e1) {
                 e1.printStackTrace();
             } catch (InterruptedException e1) {
+                e1.printStackTrace();
+            } catch (UnirestException e1) {
+                e1.printStackTrace();
+            } catch (IOException e1) {
                 e1.printStackTrace();
             }
         });

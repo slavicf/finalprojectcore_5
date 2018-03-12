@@ -3,14 +3,11 @@ import gui.GUI;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import queries.compareglobalinfochannels.CompareGlobalInfoChannels;
-import queries.mediaresonance.MediaResonance;
-import queries.showglobalinfochannel.ShowGlobalInfoChannel;
 import queries.sortchannelsbydata.SortChannelsByData;
 import settings.LoadSettings;
 import settings.SaveSettings;
 import settings.Settings;
 
-import java.io.IOException;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.FutureTask;
@@ -73,9 +70,9 @@ public class Main extends Application {
     }
 
     private static void task4() throws UnirestException {
-        System.out.println("\n\ntask3:");
+        System.out.println("\n\ntask4:");
         //task1();
-        System.out.println(MediaResonance.search("1111").toString());
+//        System.out.println(MediaResonance.search("1111").toString());
     }
 
     private static void task5() {
