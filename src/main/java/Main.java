@@ -11,10 +11,6 @@ public class Main extends Application {
 
     public static Settings settings;
 
-    private static void task6() {
-
-    }
-
     @Override
     public void start(Stage primaryStage) throws Exception {
 
@@ -24,8 +20,6 @@ public class Main extends Application {
         GUI gui = new GUI(primaryStage, settings);
 
         System.out.println("final project core");
-
-
 //        task1("UCmBkHKLRjfHDfFyhrZhowcQ", settings);
 //        task2("UCuvrjFN3uRkBT3_VUlhKqcA", "UCC7qpnId5RIQruKDJOt2exw",settings);
 //        String[] channelIds = {"UCmBkHKLRjfHDfFyhrZhowcQ",
@@ -34,7 +28,6 @@ public class Main extends Application {
 //                "UCC7qpnId5RIQruKDJOt2exw",
 //                "UCoICDijraUJjIZNrPy-mRDQ"};
 //        task3(channelIds, settings);
-
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
             SaveSettings.save(settings);
         }));

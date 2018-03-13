@@ -1,9 +1,12 @@
 package gui;
 
 import com.mashape.unirest.http.exceptions.UnirestException;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -185,13 +188,16 @@ public class GUI {
     private void task3() {
         head("Сортировать каналы по их данным", "Введите массив каналов через пробел:");
         nodes.add(label("Введите способ сортировки title/date/subscribers/videos/views:"));
-        nodes.add(textField("title"));
+//        nodes.add(textField("title"));
+        ObservableList<String> options = FXCollections.observableArrayList("title", "date", "subscribers", "videos", "views");
+        nodes.add(comboBox(options));
         Button button1 = button("Выполнить");
         button1.setOnAction(e -> {
             //System.out.println("Task3");
             try {
                 String[] channelIds = ((TextField) nodes.get(5)).getText().split(" ");
-                String sortSwitcher = ((TextField) nodes.get(7)).getText().toLowerCase();
+//                String sortSwitcher = ((TextField) nodes.get(7)).getText().toLowerCase();
+                String sortSwitcher = (String) ((ComboBox) nodes.get(7)).getValue();
                 String string = Query3.query3(channelIds, sortSwitcher, settings);
                 ((Label) nodes.get(3)).setText(string);
             } catch (UnirestException e1) {
@@ -247,13 +253,16 @@ public class GUI {
     private void task6() {
         head("Сортировать каналы по Медиа резонансу", "Введите массив каналов через пробел:");
         nodes.add(label("Введите способ сортировки title/date/subscribers/videos/views/comments:"));
-        nodes.add(textField("title"));
+//        nodes.add(textField("title"));
+        ObservableList<String> options = FXCollections.observableArrayList("title", "date", "subscribers", "videos", "views", "comments");
+        nodes.add(comboBox(options));
         Button button1 = button("Выполнить");
         button1.setOnAction(e -> {
 //            System.out.println("Task6");
             try {
                 String[] channelIds = ((TextField) nodes.get(5)).getText().split(" ");
-                String sortSwitcher = ((TextField) nodes.get(7)).getText().toLowerCase();
+//                String sortSwitcher = ((TextField) nodes.get(7)).getText().toLowerCase();
+                String sortSwitcher = (String) ((ComboBox) nodes.get(7)).getValue();
                 String string = Query.query6(channelIds, sortSwitcher, settings);
                 ((Label) nodes.get(3)).setText(string);
             } catch (ExecutionException | InterruptedException e1) {
@@ -274,6 +283,13 @@ public class GUI {
         TextField textField = new TextField(text);
         textField.setFont(font);
         return textField;
+    }
+
+    private ComboBox comboBox(ObservableList options){
+        ComboBox comboBox = new ComboBox(options);
+        comboBox.setValue(options.get(0));
+        comboBox.setStyle("-fx-font: " + font + "px;");
+        return comboBox;
     }
 
     private Button button(String text){
