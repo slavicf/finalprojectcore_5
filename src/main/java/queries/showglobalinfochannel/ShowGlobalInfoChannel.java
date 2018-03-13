@@ -11,9 +11,9 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 public class ShowGlobalInfoChannel {
-    private String idChannel;
-    private Channel channel;
-    private Settings settings;
+    protected Channel channel;
+    protected String idChannel;
+    protected Settings settings;
 
     public ShowGlobalInfoChannel(String idChannel, Settings settings) throws IOException, UnirestException {
         this.idChannel = idChannel;

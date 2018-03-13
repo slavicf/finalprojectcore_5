@@ -215,7 +215,9 @@ public class GUI {
                 String channelId = ((TextField) nodes.get(5)).getText();
                 String string = Query.task4(channelId, settings);
                 ((Label) nodes.get(3)).setText(string);
-            } catch (ExecutionException | InterruptedException e1) {
+            } catch (ExecutionException | InterruptedException | UnirestException e1) {
+                e1.printStackTrace();
+            } catch (IOException e1) {
                 e1.printStackTrace();
             }
         });
@@ -232,7 +234,9 @@ public class GUI {
                 String[] channelIds = ((TextField) nodes.get(5)).getText().split(" ");
                 String string = Query.query5(channelIds[0], channelIds[1], settings);
                 ((Label) nodes.get(3)).setText(string);
-            } catch (ExecutionException | InterruptedException e1) {
+            } catch (ExecutionException | InterruptedException | UnirestException e1) {
+                e1.printStackTrace();
+            } catch (IOException e1) {
                 e1.printStackTrace();
             }
         });

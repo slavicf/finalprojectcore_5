@@ -1,12 +1,9 @@
 package queries.mediaresonance.channel;
 
-import queries.showglobalinfochannel.Channel.Item;
-
 import java.util.Arrays;
 
-public class Channel {
+public class Channel extends queries.showglobalinfochannel.Channel.Channel{
     public long totalCommentCount;
-    public Item[] items;
 
     @Override
     public String toString() {
