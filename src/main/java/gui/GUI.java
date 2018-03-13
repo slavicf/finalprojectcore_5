@@ -39,7 +39,7 @@ public class GUI {
 
         window.setScene(s0main);
         window.setTitle("YouTube анализатор");
-        window.setResizable(false);
+//        window.setResizable(false);
         window.getIcons().add(new Image("https://cdn1.iconfinder.com/data/icons/logotypes/32/youtube-256.png"));
         window.show();
     }

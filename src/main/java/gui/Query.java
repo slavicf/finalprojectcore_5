@@ -65,31 +65,11 @@ public class Query {
     }
 
     private static void sorting(String sortSwitcher, SortMediaResonanceExt sortChannelsByData) {
-        switch (sortSwitcher) {
-            case "title": {
-                sortChannelsByData.sortTitle();
-                break;
-            }
-            case "date": {
-                sortChannelsByData.sortPublishedAt();
-                break;
-            }
-            case "subscribers": {
-                sortChannelsByData.sortSubscriberCount();
-                break;
-            }
-            case "videos": {
-                sortChannelsByData.sortVideoCount();
-                break;
-            }
-            case "views": {
-                sortChannelsByData.sortViewCount();
-                break;
-            }
-            case "comments": {
-                sortChannelsByData.sortCommentCount();
-                break;
-            }
-        }
+        if ("title".equals(sortSwitcher)) sortChannelsByData.sortTitle();
+        else if ("date".equals(sortSwitcher)) sortChannelsByData.sortPublishedAt();
+        else if ("subscribers".equals(sortSwitcher)) sortChannelsByData.sortSubscriberCount();
+        else if ("videos".equals(sortSwitcher)) sortChannelsByData.sortVideoCount();
+        else if ("views".equals(sortSwitcher)) sortChannelsByData.sortViewCount();
+        else if ("comments".equals(sortSwitcher)) sortChannelsByData.sortCommentCount();
     }
 }
