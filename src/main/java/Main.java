@@ -1,16 +1,11 @@
-import com.mashape.unirest.http.exceptions.UnirestException;
+
 import gui.GUI;
 import javafx.application.Application;
 import javafx.stage.Stage;
-import queries.compareglobalinfochannels.CompareGlobalInfoChannels;
-import queries.sortchannelsbydata.SortChannelsByData;
 import settings.LoadSettings;
 import settings.SaveSettings;
 import settings.Settings;
 
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.FutureTask;
 
 public class Main extends Application {
 

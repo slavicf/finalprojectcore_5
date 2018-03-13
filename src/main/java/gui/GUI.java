@@ -221,16 +221,11 @@ public class GUI {
 //            System.out.println("Task4");
             try {
                 String channelId = ((TextField) nodes.get(5)).getText();
-                String string1 = Query1.query1(channelId, settings);
-                String string2 = Query4.query4(channelId, settings);
-                ((Label) nodes.get(3)).setText(string1 + "\n" + string2);
+                String string = Query.task4(channelId, settings);
+                ((Label) nodes.get(3)).setText(string);
             } catch (ExecutionException e1) {
                 e1.printStackTrace();
             } catch (InterruptedException e1) {
-                e1.printStackTrace();
-            } catch (UnirestException e1) {
-                e1.printStackTrace();
-            } catch (IOException e1) {
                 e1.printStackTrace();
             }
         });
@@ -241,7 +236,18 @@ public class GUI {
     private void task5() {
         head("Сравнить Медиа резонанс", "Введите ChannelID1 и ChannelID2 через пробел:");
         Button button1 = button("Выполнить");
-        button1.setOnAction(e -> System.out.println("Task5"));
+        button1.setOnAction(e -> {
+//            System.out.println("Task5");
+            try {
+                String[] channelIds = ((TextField) nodes.get(5)).getText().split(" ");
+                String string = Query.query5(channelIds[0], channelIds[1], settings);
+                ((Label) nodes.get(3)).setText(string);
+            } catch (ExecutionException e1) {
+                e1.printStackTrace();
+            } catch (InterruptedException e1) {
+                e1.printStackTrace();
+            }
+        });
         nodes.add(button1);
         scene2();
     }

@@ -6,7 +6,7 @@ public class Statistics {
 
     @Override
     public String toString() {
-        return "Комментариев: " + commentCount;
+        return "Всего комментариев: " + commentCount;
 //        return "Просмотров: " + viewCount + "\nКомментариев: " + commentCount;
     }
 }
