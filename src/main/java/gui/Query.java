@@ -1,8 +1,6 @@
 package gui;
 
 import com.mashape.unirest.http.exceptions.UnirestException;
-import queries.compareglobalinfochannels.CompareGlobalInfoChannels;
-import queries.mediaresonance.CompareMediaResonance;
 import queries.mediaresonance.CompareMediaResonanceExt;
 import queries.mediaresonance.MediaResonanceExt;
 import settings.Settings;
@@ -26,7 +24,7 @@ public class Query {
         long endTime = System.currentTimeMillis();
         string += showGlobalInfoChannel;
         if (settings.getCalculateTimeForQuery().equals(true))
-            string += "\nВремя затраченного на выполнение: " + (endTime - startTime) + " миллисекунд";
+            string += "\n\nВремя затраченного на выполнение: " + (endTime - startTime) + " миллисекунд";
         return string;
     }
 
@@ -43,7 +41,7 @@ public class Query {
         long endTime = System.currentTimeMillis();
         string += compareGlobalInfoChannels;
         if (settings.getCalculateTimeForQuery().equals(true))
-            string += "\nВремя затраченного на выполнение: " + (endTime - startTime) + " миллисекунд";
+            string += "\n\nВремя затраченного на выполнение: " + (endTime - startTime) + " миллисекунд";
         return string;
     }
 }
