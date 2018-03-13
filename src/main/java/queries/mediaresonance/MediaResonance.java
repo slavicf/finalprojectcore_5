@@ -87,7 +87,7 @@ public class MediaResonance {
             response = YouTubeAPI.videos(videoID);
             video = JSON.parseObject(response, Video.class);
             for (queries.mediaresonance.videos.Item videoItem: video.items) {
-                statistics.viewCount += videoItem.statistics.viewCount;
+//                statistics.viewCount += videoItem.statistics.viewCount;
                 statistics.commentCount += videoItem.statistics.commentCount;
             }
         } while (pageToken != null);

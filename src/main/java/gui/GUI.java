@@ -20,7 +20,7 @@ import java.util.concurrent.ExecutionException;
 public class GUI {
 
     private int width = 700;
-    private int height = 700;
+    private int height = 800;
     private Font font = new Font(12);
     private int spacing = 10;
     private Stage window;
@@ -157,13 +157,7 @@ public class GUI {
                 String channelId = ((TextField) nodes.get(5)).getText();
                 String string = Query1.query1(channelId, settings);
                 ((Label) nodes.get(3)).setText(string);
-            } catch (UnirestException e1) {
-                e1.printStackTrace();
-            } catch (IOException e1) {
-                e1.printStackTrace();
-            } catch (ExecutionException e1) {
-                e1.printStackTrace();
-            } catch (InterruptedException e1) {
+            } catch (UnirestException | IOException | ExecutionException | InterruptedException e1) {
                 e1.printStackTrace();
             }
         });
@@ -180,9 +174,7 @@ public class GUI {
                 String[] channelIds = ((TextField) nodes.get(5)).getText().split(" ");
                 String string = Query2.query2(channelIds[0], channelIds[1], settings);
                 ((Label) nodes.get(3)).setText(string);
-            } catch (ExecutionException e1) {
-                e1.printStackTrace();
-            } catch (InterruptedException e1) {
+            } catch (ExecutionException | InterruptedException e1) {
                 e1.printStackTrace();
             }
         });
@@ -193,7 +185,7 @@ public class GUI {
     private void task3() {
         head("Сортировать каналы по их данным", "Введите массив каналов через пробел:");
         nodes.add(label("Введите способ сортировки title/date/subscribers/videos/views:"));
-        nodes.add(textField("name"));
+        nodes.add(textField("title"));
         Button button1 = button("Выполнить");
         button1.setOnAction(e -> {
             //System.out.println("Task3");
@@ -223,9 +215,7 @@ public class GUI {
                 String channelId = ((TextField) nodes.get(5)).getText();
                 String string = Query.task4(channelId, settings);
                 ((Label) nodes.get(3)).setText(string);
-            } catch (ExecutionException e1) {
-                e1.printStackTrace();
-            } catch (InterruptedException e1) {
+            } catch (ExecutionException | InterruptedException e1) {
                 e1.printStackTrace();
             }
         });
@@ -242,9 +232,7 @@ public class GUI {
                 String[] channelIds = ((TextField) nodes.get(5)).getText().split(" ");
                 String string = Query.query5(channelIds[0], channelIds[1], settings);
                 ((Label) nodes.get(3)).setText(string);
-            } catch (ExecutionException e1) {
-                e1.printStackTrace();
-            } catch (InterruptedException e1) {
+            } catch (ExecutionException | InterruptedException e1) {
                 e1.printStackTrace();
             }
         });
@@ -257,7 +245,10 @@ public class GUI {
         nodes.add(label("Введите способ сортировки name/date/subscribers/videos/views:"));
         nodes.add(textField("name"));
         Button button1 = button("Выполнить");
-        button1.setOnAction(e -> System.out.println("Task6"));
+        button1.setOnAction(e -> {
+//            System.out.println("Task6");
+
+        });
         nodes.add(button1);
         scene2();
     }

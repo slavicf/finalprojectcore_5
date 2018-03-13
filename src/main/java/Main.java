@@ -11,10 +11,6 @@ public class Main extends Application {
 
     public static Settings settings;
 
-    private static void task5() {
-
-    }
-
     private static void task6() {
 
     }

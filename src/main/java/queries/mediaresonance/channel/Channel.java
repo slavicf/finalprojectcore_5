@@ -1,12 +1,11 @@
-package queries.showglobalinfochannel.Channel;
+package queries.mediaresonance.channel;
 
-import queries.mediaresonance.search.PageInfo;
+import queries.showglobalinfochannel.Channel.Item;
 
 import java.util.Arrays;
 
 public class Channel {
-//    public String nextPageToken;
-//    public PageInfo pageInfo;
+    public long totalCommentCount;
     public Item[] items;
 
     @Override
@@ -32,5 +31,9 @@ public class Channel {
 
     public long getViewCount() {
         return items[0].statistics.viewCount;
+    }
+
+    public long getTotalCommentCount() {
+        return totalCommentCount;
     }
 }

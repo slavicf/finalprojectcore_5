@@ -1,7 +1,7 @@
 package queries.mediaresonance.videos;
 
 public class Statistics {
-    public long viewCount;
+//    public long viewCount;
     public long commentCount;
 
     @Override
