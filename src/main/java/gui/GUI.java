@@ -246,12 +246,19 @@ public class GUI {
 
     private void task6() {
         head("Сортировать каналы по Медиа резонансу", "Введите массив каналов через пробел:");
-        nodes.add(label("Введите способ сортировки name/date/subscribers/videos/views:"));
-        nodes.add(textField("name"));
+        nodes.add(label("Введите способ сортировки title/date/subscribers/videos/views/comments:"));
+        nodes.add(textField("title"));
         Button button1 = button("Выполнить");
         button1.setOnAction(e -> {
 //            System.out.println("Task6");
-
+            try {
+                String[] channelIds = ((TextField) nodes.get(5)).getText().split(" ");
+                String sortSwitcher = ((TextField) nodes.get(7)).getText().toLowerCase();
+                String string = Query.query6(channelIds, sortSwitcher, settings);
+                ((Label) nodes.get(3)).setText(string);
+            } catch (ExecutionException | InterruptedException e1) {
+                e1.printStackTrace();
+            }
         });
         nodes.add(button1);
         scene2();

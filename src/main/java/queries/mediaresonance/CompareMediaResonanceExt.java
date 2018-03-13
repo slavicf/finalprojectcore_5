@@ -20,6 +20,6 @@ public class CompareMediaResonanceExt {
                 "\nКол-во подписчиков 1: " + resonanceExt1.getSubscriberCount() +"\t\t\t\t\t\t| Кол-во подписчиков канала 2: " + resonanceExt2.getSubscriberCount() +
                 "\nКол-во видео на канале 1: " + resonanceExt1.getVideoCount() + "\t\t\t\t\t\t| Кол-во видео на канале 2: " + resonanceExt2.getVideoCount() +
                 "\nКол-во просмотров всех видео 1: " + resonanceExt1.getViewCount() + "\t\t\t| Кол-во просмотров всех видео на канале 2 " + resonanceExt2.getViewCount() +
-                "\nКол-во комментариев всех видео на канале 1: " + resonanceExt1.gettotalCommentCount() + "\t\t| Кол-во комментариев всех видео на канале 2: " + resonanceExt2.gettotalCommentCount();
+                "\nКол-во комментариев всех видео на канале 1: " + resonanceExt1.getTotalCommentCount() + "\t\t| Кол-во комментариев всех видео на канале 2: " + resonanceExt2.getTotalCommentCount();
     }
 }

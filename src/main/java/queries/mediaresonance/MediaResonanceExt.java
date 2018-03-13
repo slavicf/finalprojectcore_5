@@ -93,7 +93,7 @@ public class MediaResonanceExt extends ShowGlobalInfoChannel {
         System.out.println(channel.totalCommentCount);
     }
 
-    public long gettotalCommentCount() {
+    public long getTotalCommentCount() {
         return channel.totalCommentCount;
     }
 

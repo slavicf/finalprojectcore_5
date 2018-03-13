@@ -3,6 +3,7 @@ package gui;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import queries.mediaresonance.CompareMediaResonanceExt;
 import queries.mediaresonance.MediaResonanceExt;
+import queries.mediaresonance.SortMediaResonanceExt;
 import settings.Settings;
 
 import java.io.IOException;
@@ -20,9 +21,9 @@ public class Query {
 
         long startTime = System.currentTimeMillis();
         thread4.start();
-        MediaResonanceExt showGlobalInfoChannel = task4ft.get();
+        MediaResonanceExt resonanceExt = task4ft.get();
         long endTime = System.currentTimeMillis();
-        string += showGlobalInfoChannel;
+        string += resonanceExt;
         if (settings.getCalculateTimeForQuery().equals(true))
             string += "\n\nВремя затраченного на выполнение: " + (endTime - startTime) + " миллисекунд";
         return string;
@@ -37,11 +38,58 @@ public class Query {
 
         long startTime = System.currentTimeMillis();
         thread5.start();
-        CompareMediaResonanceExt compareGlobalInfoChannels = task5ft.get();
+        CompareMediaResonanceExt resonanceExt = task5ft.get();
         long endTime = System.currentTimeMillis();
-        string += compareGlobalInfoChannels;
+        string += resonanceExt;
         if (settings.getCalculateTimeForQuery().equals(true))
             string += "\n\nВремя затраченного на выполнение: " + (endTime - startTime) + " миллисекунд";
         return string;
+    }
+
+    public static String query6(String[] channelIds, String sortSwitcher, Settings settings) throws ExecutionException, InterruptedException {
+        String string = "";
+
+        Callable<SortMediaResonanceExt> channelCallable = () -> new SortMediaResonanceExt(channelIds, settings);
+        FutureTask<SortMediaResonanceExt> task6ft = new FutureTask<>(channelCallable);
+        Thread thread6 = new Thread(task6ft);
+
+            long startTime = System.currentTimeMillis();
+            thread6.start();
+            SortMediaResonanceExt resonanceExt = task6ft.get();
+            sorting(sortSwitcher, resonanceExt);
+            long endTime = System.currentTimeMillis();
+            string += resonanceExt;
+        if (settings.getCalculateTimeForQuery().equals(true))
+            string += "\nВремя затраченного на выполнение: " + (endTime - startTime) + " миллисекунд";
+        return string;
+    }
+
+    private static void sorting(String sortSwitcher, SortMediaResonanceExt sortChannelsByData) {
+        switch (sortSwitcher) {
+            case "title": {
+                sortChannelsByData.sortTitle();
+                break;
+            }
+            case "date": {
+                sortChannelsByData.sortPublishedAt();
+                break;
+            }
+            case "subscribers": {
+                sortChannelsByData.sortSubscriberCount();
+                break;
+            }
+            case "videos": {
+                sortChannelsByData.sortVideoCount();
+                break;
+            }
+            case "views": {
+                sortChannelsByData.sortViewCount();
+                break;
+            }
+            case "comments": {
+                sortChannelsByData.sortCommentCount();
+                break;
+            }
+        }
     }
 }
